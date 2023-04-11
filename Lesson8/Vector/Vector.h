@@ -68,8 +68,3 @@ Vector::~Vector()
         delete[] data;
     }
 }
-
-int main()
-{
-    return 0;
-}
