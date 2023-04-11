@@ -107,7 +107,9 @@ public:
     }
 
     // 임의의 위치의 원소에 접근한다.
-    bool operator[](int i) { return (data[1 / 32] & (1 << (i % 32))) != 0; }
+    bool operator[](int i) { return (data[i / 32] & (1 << (i % 32))) != 0; }
+    //%나머지 /는 몫
+    // data[i / 32] & (1 << (i % 32)) 해당위치에 있는 비트가 1일떄만 1, 0일떄는 0
 
     // x 번째 위치한 원소를 제거한다.
     void remove(int x)
@@ -119,7 +121,7 @@ public:
 
             // 만일 curr 위치에 있는 비트가 1이라면
             // prev 위치에 있는 비트를 1로 만든다.
-            if (data[curr / 32] & (1 << (curr & 32)))
+            if (data[curr / 32] & (1 << (curr % 32)))
             {
                 data[prev / 32] |= (1 << (prev % 32));
             }
